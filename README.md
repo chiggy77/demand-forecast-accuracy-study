@@ -19,8 +19,9 @@ python tests/test_forecast.py
 - Methods: naive, 3-month moving average, seasonal naive, seasonal naive x growth, Holt-Winters (damped trend, multiplicative seasonality).
 - WAPE = sum|A-F| / sum A. Bias = sum(F-A) / sum A (positive = over-forecast). Forecast value added = error of the naive forecast minus error of the method.
 
-## Interview cheat-sheet
-- Why WAPE and not MAPE? MAPE explodes on low or zero volumes and gives small items too much weight; WAPE weights by volume.
-- Why did seasonal naive x growth over-forecast? It extrapolated 2016's +8.6% growth, but 2017 grew only +3.6%.
-- Why is the moving average worse than naive in the rolling test? It lags the seasonal swings.
-- What does this not test? Promotions, new product launches, product life cycles, inventory and service levels.
+## Design choices and limitations
+
+- **Why WAPE and not MAPE?** MAPE explodes on low or zero volumes and gives small items too much weight. WAPE weights errors by volume.
+- **Why did seasonal naive x growth over-forecast?** It extrapolated 2016's +8.6% growth, but 2017 grew only +3.6%.
+- **Why is the moving average worse than naive in the rolling test?** It lags the seasonal swings.
+- **What this study does not test:** promotions, new product launches, product life cycles, inventory and service levels.
